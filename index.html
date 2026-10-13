@@ -126,7 +126,7 @@
 
                             <a class="catalog-banner" href="catalog.html">
                     <div class="catalog-banner-cover">
-                                                                            <span class="catalog-banner-cover-mark">FUJI CATALOG 2026-2027</span>
+                                                                            <img class="cat-hero-cover-photo" src="uploads/catalogs/general-catalog-2026-2027.jpg" alt="FURNITURE GENERAL CATALOG" loading="lazy" decoding="async">
                                             </div>
                     <div class="catalog-banner-ribbon">
                         <div class="catalog-banner-title">
@@ -248,7 +248,8 @@
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.pf2-form input, .pf2-form select, .pf2-form button, form[method="post"] input, form[method="post"] select, form[method="post"] textarea, form[method="post"] button')
+  // 静的なコピーではフォームはどれも送れない（検索も、お問い合わせも）
+  document.querySelectorAll('form input, form select, form textarea, form button')
     .forEach(function (el) { el.disabled = true; el.title = '見た目確認用のため、動きません'; });
 });
 </script>

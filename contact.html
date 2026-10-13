@@ -75,7 +75,7 @@
                 <p class="contact-required-note"><span>*</span> は必須項目です。</p>
 
                 <form method="post" action="contact.html" novalidate>
-                    <input type="hidden" name="csrf_token" value="98b81f0ec40e77c8104198426f5ba4ec74f46ec909aeeb5b5ea8df6bd9e2a3f5">                    <div class="cf-honeypot" aria-hidden="true">
+                    <input type="hidden" name="csrf_token" value="de5708dd4eb880337a1e012f2b04ecfb388fc0d6f653a60ac329c9b7ff0e2652">                    <div class="cf-honeypot" aria-hidden="true">
                         <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
                     </div>
 
@@ -238,7 +238,8 @@
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.pf2-form input, .pf2-form select, .pf2-form button, form[method="post"] input, form[method="post"] select, form[method="post"] textarea, form[method="post"] button')
+  // 静的なコピーではフォームはどれも送れない（検索も、お問い合わせも）
+  document.querySelectorAll('form input, form select, form textarea, form button')
     .forEach(function (el) { el.disabled = true; el.title = '見た目確認用のため、動きません'; });
 });
 </script>

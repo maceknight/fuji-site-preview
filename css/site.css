@@ -440,8 +440,10 @@ footer {
 .nc-catalog a {
     display: flex; gap: 26px; align-items: center; text-decoration: none; color: inherit;
 }
+/* 表紙はカタログの1ページ目（A4縦）なので、枠も縦長（1:1.42）にする。
+   横長の枠だと、表紙の真ん中の帯しか見えなかった */
 .nc-catalog-cover {
-    flex: 0 0 150px; height: 112px; background: var(--ink);
+    flex: 0 0 100px; aspect-ratio: 1 / 1.42; background: var(--ink);
     display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
 .nc-catalog-cover img { width: 100%; height: 100%; object-fit: cover; }
@@ -973,7 +975,14 @@ button.pd-variation-icon-item {
 }
 
 /* ── カタログ ───────────────────────────────── */
+/* 表紙の写真（カタログPDFの1ページ目）があるとき。
+   元テーマの枠は文字の表紙用で、内側の余白とグラデーションがあるため、
+   写真のときは余白を外して枠いっぱいに出し、かぶせのグラデーションも消す。
+   枠は 1:1.42（A4）で、表紙画像と同じ比率なので切れはほぼ出ない。 */
+.cat-hero-cover--photo { padding: 0; background: var(--paper); }
+.cat-hero-cover--photo::before { display: none; }
 .cat-hero-cover-photo {
+    position: absolute; inset: 0;
     width: 100%; height: 100%; object-fit: cover; display: block;
 }
 .cat-supp-cover-photo {

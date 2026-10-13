@@ -288,7 +288,8 @@
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.pf2-form input, .pf2-form select, .pf2-form button, form[method="post"] input, form[method="post"] select, form[method="post"] textarea, form[method="post"] button')
+  // 静的なコピーではフォームはどれも送れない（検索も、お問い合わせも）
+  document.querySelectorAll('form input, form select, form textarea, form button')
     .forEach(function (el) { el.disabled = true; el.title = '見た目確認用のため、動きません'; });
 });
 </script>
