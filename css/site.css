@@ -1161,7 +1161,7 @@ body.qv-locked { overflow: hidden; }
 /* ── バリエーションのアプリ版（A案(2)）──────────────
    components/variation-picker.php ／ js/main.js の initPicker()。
    先方のアプリの画面（修正希望 PDF 3ページ目）の並びに合わせ、色と書体はサイトのものを使う */
-.pd-variation-accordion[hidden], .pva[hidden], .pva-step[hidden] { display: none !important; }
+.pd-variation-accordion[hidden], .pva[hidden], .pva-step[hidden], .pva-opt[hidden] { display: none !important; }
 
 .pva-switch { display: inline-flex; border: 1px solid var(--fog); border-radius: 2px; overflow: hidden; }
 .pva-switch button {
@@ -1257,3 +1257,12 @@ body.qv-locked { overflow: hidden; }
 /* 縦長のロゴは、文字のブランド名と並ぶ列（BRANDS・ジャンル内のブランド切り替え）では高さを足して目方を揃える */
 .bl-list img.is-tall { max-height: 34px; }
 .cx-brand-logo.is-tall { height: 28px; }
+.scroll-thumb--logo-tall img { max-height: 56%; }
+
+/* ── 商品詳細：メイン画像とサブ画像を切らずに全体を見せる ──
+   元テーマは object-fit: cover で正方形に切り抜いていたため、横長・縦長の写真の端が切れていた（先方の指摘）。
+   枠の中に収め、余った部分は白に */
+.pd-gallery-main { background: #fff; }
+.pd-gallery-main img { object-fit: contain; }
+.pd-gallery-thumb { background: #fff; }
+.pd-gallery-thumb img { object-fit: contain; }
