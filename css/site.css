@@ -1216,6 +1216,7 @@ body.qv-locked { overflow: hidden; }
 /* パターンB の商品タイルも、ブランド名の札が写真に被らないよう上に帯を空ける */
 .pcx-tile-media.has-brand { padding-top: 34px; }
 .pcx-tile-media.has-brand .pcx-tile-img { height: 100%; }
+.brand-page-grid .product-thumb--contain.has-brand img { position: absolute; left: 7%; top: 7%; width: 86%; height: 86%; }
 
 /* ── 一覧サムネイル：写真のある枠は内側を白に ──
    商品写真はほぼ白背景なので、生成りの枠の中に白い四角が浮いて中途半端に見えていた（先方の指摘）。
@@ -1235,3 +1236,16 @@ body.qv-locked { overflow: hidden; }
     background: #fff;
     box-shadow: inset 0 0 0 1px var(--fog);
 }
+/* 写真が枠いっぱいだと、白い縁が生成りの線に被って線が途切れて見える。周りに少し余白を取る
+   （ブランドのある枠は、上の帯の分を空けた別の指定が後ろ＝上で効く） */
+.scroll-thumb--contain img,
+.product-thumb--contain img {
+    position: absolute; left: 7%; top: 7%; width: 86%; height: 86%;
+}
+.scroll-thumb--contain.has-brand img,
+.product-thumb--contain.has-brand img {
+    left: 7%; top: 30%; width: 86%; height: 63%;
+}
+/* パターンB の商品タイルも同じく、写真の周りに余白（ブランドのある枠は上の帯を残す） */
+.pcx-tile-media:has(.pcx-tile-img) { padding: 6%; }
+.pcx-tile-media.has-brand:has(.pcx-tile-img) { padding-top: 34px; }
