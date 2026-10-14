@@ -157,7 +157,7 @@ footer {
 }
 
 /* ── 商品カード（ブランドページで使用）────────────── */
-.product-thumb--contain img {
+.product-thumb--contain > img {
     width: 100%; height: 100%; object-fit: contain; display: block;
 }
 .product-thumb--logo {
@@ -1207,16 +1207,15 @@ body.qv-locked { overflow: hidden; }
    ブランドのある商品は、上の帯をロゴ用に空けて、写真はその下に収める（先方のアプリと同じ並び）。
    ロゴの枠は元テーマの 50%×33% だと帯が太くなりすぎるので、高さだけ詰める。 */
 .has-brand .product-brand-tag--logo { height: 17%; }
-.scroll-thumb--contain.has-brand img,
-.product-thumb--contain.has-brand img {
+.scroll-thumb--contain.has-brand > img,
+.product-thumb--contain.has-brand > img {
     position: absolute; left: 5%; top: 30%; width: 90%; height: 66%;
 }
 /* ブランドページでは帯ごと要らない（ロゴを出していないので） */
-.brand-page-grid .product-thumb--contain.has-brand img { position: static; width: 100%; height: 100%; }
 /* パターンB の商品タイルも、ブランド名の札が写真に被らないよう上に帯を空ける */
 .pcx-tile-media.has-brand { padding-top: 34px; }
 .pcx-tile-media.has-brand .pcx-tile-img { height: 100%; }
-.brand-page-grid .product-thumb--contain.has-brand img { position: absolute; left: 7%; top: 7%; width: 86%; height: 86%; }
+.brand-page-grid .product-thumb--contain.has-brand > img { position: absolute; left: 7%; top: 7%; width: 86%; height: 86%; }
 
 /* ── 一覧サムネイル：写真のある枠は内側を白に ──
    商品写真はほぼ白背景なので、生成りの枠の中に白い四角が浮いて中途半端に見えていた（先方の指摘）。
@@ -1238,14 +1237,23 @@ body.qv-locked { overflow: hidden; }
 }
 /* 写真が枠いっぱいだと、白い縁が生成りの線に被って線が途切れて見える。周りに少し余白を取る
    （ブランドのある枠は、上の帯の分を空けた別の指定が後ろ＝上で効く） */
-.scroll-thumb--contain img,
-.product-thumb--contain img {
+.scroll-thumb--contain > img,
+.product-thumb--contain > img {
     position: absolute; left: 7%; top: 7%; width: 86%; height: 86%;
 }
-.scroll-thumb--contain.has-brand img,
-.product-thumb--contain.has-brand img {
+.scroll-thumb--contain.has-brand > img,
+.product-thumb--contain.has-brand > img {
     left: 7%; top: 30%; width: 86%; height: 63%;
 }
 /* パターンB の商品タイルも同じく、写真の周りに余白（ブランドのある枠は上の帯を残す） */
 .pcx-tile-media:has(.pcx-tile-img) { padding: 6%; }
 .pcx-tile-media.has-brand:has(.pcx-tile-img) { padding-top: 34px; }
+
+/* 縦長のロゴ（tesoro）：横長前提の枠だと高さで縮んで豆粒になる。ロゴ帯の高さいっぱいを使い、左上に揃える */
+.has-brand .product-brand-tag--tall { height: calc(30% - 10px); width: auto; aspect-ratio: 2 / 3; }
+.product-brand-tag--tall .product-brand-tag-inner img { height: 100%; width: auto; }
+/* 縦長のロゴは、ブランドページの見出しでは高さを取る */
+.brand-header-logo--tall { height: 120px; }
+/* 縦長のロゴは、文字のブランド名と並ぶ列（BRANDS・ジャンル内のブランド切り替え）では高さを足して目方を揃える */
+.bl-list img.is-tall { max-height: 34px; }
+.cx-brand-logo.is-tall { height: 28px; }
